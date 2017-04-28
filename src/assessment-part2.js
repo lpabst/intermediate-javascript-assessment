@@ -35,24 +35,24 @@
 var firstUser = 'don\'t touch this string!';
 var thirdUser = 'don\'t touch this string, either!';
 
-// function noWeakLink() {
+function noWeakLink() {
 
-//   var promise = $http({
-//     method: 'GET',
-//     url: '/api/users'
-//   })
-//   .then(function(response){
-//     firstUser = response.data[0];
-//   })
-//   .then(function(results){
-//     thirdUser = results.data[2];
-//   });
+  return $http({
+    method: 'GET',
+    url: '/api/users'
+  })
+  .then(function(response){
+    firstUser = response.data[0];
+    return response;
+  })
+  .then(function(results){
+    thirdUser = results.data[2];
+    return results.data[9];
+  });
 
+}
 
-//   return promise;
-// }
-
-// noWeakLink();
+noWeakLink();
 
 
 
@@ -81,6 +81,7 @@ function large() {
 }
 // CODE HERE...
 var boundToElephant = large.bind(elephant);
+// boundToElephant();
 
 
 // *************

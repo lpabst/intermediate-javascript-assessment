@@ -13,16 +13,17 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-function callBinding(magicAnimals, updateAnimal, id){
 
+
+function callBinding(magicAnimals, updateAnimal, id){
     for (var i in magicAnimals){
         if (magicAnimals[i].id === id){
            var updateTrogdor = updateAnimal.call(magicAnimals[i], 'Trogdor');
            return updateTrogdor;
         }
     }
-
 }
+
 
 // *************
 // * PROBLEM 2 *
@@ -66,11 +67,12 @@ function promiseMe($q){
 
     setTimeout(function(){
         defer.resolve(foo = 'bar');
-    }, 0020);
+    }, 0020)
 
-    return defer;
+    return defer.promise;
 
 }
+
 
 // *************
 // * PROBLEM 4 *
@@ -89,11 +91,14 @@ function emailList($q, $http){
     var defer = $q.defer();
 
     $http.get('/api/users').then(function(response){
-         var emails = response.data;
-         return emails;
-    }).then(function(results){
-        defer.resolve(results);
+        var emails = [];
+         for (var i in response.data){
+            emails.push(response.data[i].email);
+         }
+         defer.resolve(emails);
     })
-
-    return defer;
+    console.log(emails);
+    return defer.promise;
 }
+
+
