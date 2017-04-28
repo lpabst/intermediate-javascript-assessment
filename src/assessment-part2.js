@@ -35,24 +35,24 @@
 var firstUser = 'don\'t touch this string!';
 var thirdUser = 'don\'t touch this string, either!';
 
-function noWeakLink() {
+// function noWeakLink() {
 
-  var promise = $http({
-    method: 'GET',
-    url: '/api/users'
-  })
-  .then(function(response){
-    firstUser = response.data[0];
-  })
-  .then(function(results){
-    thirdUser = results.data[2];
-  });
+//   var promise = $http({
+//     method: 'GET',
+//     url: '/api/users'
+//   })
+//   .then(function(response){
+//     firstUser = response.data[0];
+//   })
+//   .then(function(results){
+//     thirdUser = results.data[2];
+//   });
 
 
-  return promise;
-}
+//   return promise;
+// }
 
-noWeakLink();
+// noWeakLink();
 
 
 
